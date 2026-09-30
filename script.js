@@ -1,7 +1,7 @@
 // ================================================================
 // KONFIGURASI — ganti sesuai deployment Apps Script kamu
 // ================================================================
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwlpJEELv7Xco_W1GjIfllPrgVm09ndOgO5dU70drogg58G5VnHWeYfdr88xRSrFGh_/exec';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyXsZ6IVJQ9XP0XisG2ewB4EosgvY2O2xTwB3wHamyxiLASbxdee7Z6ANElItyKDE4aEw/exec';
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1TzU1SUuz7MeVUys3M7ppX6IvTNpHqF0fkFW6sF1mWUg/edit?gid=1638763956#gid=1638763956';
 
 // ================================================================
@@ -613,12 +613,17 @@ async function loadLandingStats(){
   const elPersen = document.getElementById('landingPersen');
   if(!elTotal && !elHadir && !elPersen) return;
   try{
-    const res = await fetch(`${WEB_APP_URL}?action=get_stats`);
+    const res = await fetch(`${WEB_APP_URL}?action=get_stats&_=${Date.now()}`);
     const data = await res.json();
-    if(elTotal) elTotal.textContent = data.totalMahasiswa ?? '0';
-    if(elHadir) elHadir.textContent = `${data.hadirHariIni ?? 0} hadir`;
-    if(elPersen) elPersen.textContent = `${data.persen ?? 0}%`;
+    console.log('get_stats:', data);
+    const total  = data.totalMahasiswa ?? data.total ?? 0;
+    const hadir  = data.hadirHariIni  ?? data.hadir ?? 0;
+    const persen = data.persen        ?? data.persentase ?? 0;
+    if(elTotal) elTotal.textContent = total;
+    if(elHadir) elHadir.textContent = `${hadir} hadir`;
+    if(elPersen) elPersen.textContent = `${persen}%`;
   }catch(err){
+    console.error('get_stats gagal:', err);
     if(elTotal) elTotal.textContent = '0';
     if(elHadir) elHadir.textContent = '0 hadir';
     if(elPersen) elPersen.textContent = '0%';
