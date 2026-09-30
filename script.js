@@ -1,8 +1,8 @@
 // ================================================================
 // KONFIGURASI — ganti sesuai deployment Apps Script kamu
 // ================================================================
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzCYs-AT1gTbkcGT0d7r7esmXsBCCj3gx7vRXLzX8YvFlEpa5a9vUPEUa-Bs8MMDdFp/exec';
-const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1Vj9l0PPAlALarPD01mXd5S64cUv3rk2pNCn0X3SuFD4/edit?gid=0#gid=0';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwlpJEELv7Xco_W1GjIfllPrgVm09ndOgO5dU70drogg58G5VnHWeYfdr88xRSrFGh_/exec';
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1TzU1SUuz7MeVUys3M7ppX6IvTNpHqF0fkFW6sF1mWUg/edit?gid=1638763956#gid=1638763956';
 
 // ================================================================
 // STATE
